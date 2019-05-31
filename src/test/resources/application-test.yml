@@ -1,0 +1,6 @@
+levensverzekering-service:
+  host: localhost
+  port: ${wiremock.server.port}
+stubrunner:
+  ids: 'nl.bank:levensverzekering-service:+:stubs:9090'
+  repositoryRoot: https://repo.spring.io/libs-snapshot

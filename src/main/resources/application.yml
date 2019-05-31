@@ -1,0 +1,11 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+levensverzekering-service:
+  host: localhost
+  port: 8090
+logging:
+  level:
+    root: INFO
+    nl.bank.leningservice: INFO
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
