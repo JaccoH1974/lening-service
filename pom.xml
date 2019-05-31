@@ -17,6 +17,7 @@
     <properties>
         <java.version>1.8</java.version>
         <spring-boot-admin.version>2.1.4</spring-boot-admin.version>
+        <spring-cloud-contract.version>2.1.1.RELEASE</spring-cloud-contract.version>
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
     </properties>
 
@@ -62,14 +63,6 @@
         </dependency>
 
         <!-- Contract Test Dependencies -->
-        <!-- Producer dependency -->
-        <!-- Consumer dependency -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-contract-wiremock</artifactId>
-            <version>2.1.1.RELEASE</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-contract-stub-runner</artifactId>
@@ -80,6 +73,15 @@
             <artifactId>levensverzekering-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!-- Producer dependency -->
+        <!-- Consumer dependency -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-contract-wiremock</artifactId>
+            <version>2.1.1.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
