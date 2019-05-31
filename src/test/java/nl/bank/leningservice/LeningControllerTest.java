@@ -1,6 +1,7 @@
 package nl.bank.leningservice;
 
 import com.github.tomakehurst.wiremock.client.WireMock;
+import feign.FeignException;
 import nl.bank.leningservice.interfaces.levensverzekering.LevensVerzekeringRestClient;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpStatus;
@@ -56,7 +57,6 @@ public class LeningControllerTest {
         try {
 
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            String dateString = format.format(new Date());
             Date geboortedatum = format.parse("1999-09-06");
             Double inkomen = 75000d;
             Integer looptijd = 360;
@@ -75,4 +75,84 @@ public class LeningControllerTest {
         }
     }
 
+    @Test
+    public void testGetMaximumLening_Jaarrente_Null_Error() {
+
+        try {
+
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            Date geboortedatum = format.parse("1999-09-06");
+            Double inkomen = 75000d;
+            Integer looptijd = 360;
+
+            Lening lening = new Lening(geboortedatum, 300000d, inkomen, 1185.3626964531566d, 60000d, 33.5);
+
+            ResponseEntity<Lening> response = controller.getMaximumLening(geboortedatum, inkomen, looptijd, null);
+
+            Assertions.assertThat(response.getStatusCode()).isEqualTo(org.springframework.http.HttpStatus.BAD_REQUEST);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Assert.fail();
+        }
+    }
+
+    @Test
+    public void testGetMaximumLening_Geboortedatum_Null_Error() {
+
+            Double inkomen = 75000d;
+            Integer looptijd = 360;
+            Double jaarrente = 2.5d;
+
+            Lening lening = new Lening(null, 300000d, inkomen, 1185.3626964531566d, 60000d, 33.5);
+
+            ResponseEntity<Lening> response = controller.getMaximumLening(null, inkomen, looptijd, jaarrente);
+
+            Assertions.assertThat(response.getStatusCode()).isEqualTo(org.springframework.http.HttpStatus.BAD_REQUEST);
+
+    }
+
+    @Test
+    public void testGetMaximumLening_Inkomen_Null_Error() {
+
+        try {
+
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            Date geboortedatum = format.parse("1999-09-06");
+            Integer looptijd = 360;
+            Double jaarrente = 2.5d;
+
+            Lening lening = new Lening(geboortedatum, 300000d, null, 1185.3626964531566d, 60000d, 33.5);
+
+            ResponseEntity<Lening> response = controller.getMaximumLening(geboortedatum, null, looptijd, jaarrente);
+
+            Assertions.assertThat(response.getStatusCode()).isEqualTo(org.springframework.http.HttpStatus.BAD_REQUEST);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Assert.fail();
+        }
+    }
+
+    @Test
+    public void testGetMaximumLening_Looptijd_null_Error() {
+
+        try {
+
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            Date geboortedatum = format.parse("1999-09-06");
+            Double inkomen = 75000d;
+            Double jaarrente = 2.5d;
+
+            Lening lening = new Lening(geboortedatum, 300000d, inkomen, 1185.3626964531566d, 60000d, 33.5);
+
+            ResponseEntity<Lening> response = controller.getMaximumLening(geboortedatum, inkomen, null, jaarrente);
+
+            Assertions.assertThat(response.getStatusCode()).isEqualTo(org.springframework.http.HttpStatus.BAD_REQUEST);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Assert.fail();
+        }
+    }
 }
