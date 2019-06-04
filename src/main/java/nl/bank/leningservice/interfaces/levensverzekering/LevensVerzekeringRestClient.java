@@ -12,7 +12,9 @@ import javax.ws.rs.core.HttpHeaders;
 @FeignClient (name = "levensverzekering-service", url="http://${levensverzekering-service.host}:${levensverzekering-service.port}")
 public interface LevensVerzekeringRestClient {
 
-        @RequestMapping(method = RequestMethod.GET, value = "/bank/verzekering/leven", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+        @RequestMapping(method = RequestMethod.GET,
+                value = "/bank/verzekering/leven",
+                consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
         Double getPremie(@RequestParam("verzekerdkapitaal") String verzekerdkapitaal,
                          @RequestParam("geboortedatum")String geboortedatum,
                          @RequestParam("looptijd") String looptijd);

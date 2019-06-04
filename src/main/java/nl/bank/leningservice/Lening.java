@@ -1,8 +1,7 @@
 package nl.bank.leningservice;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.*;
 
 import java.util.Date;
 
@@ -10,7 +9,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Lening {
-
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date geboortedatum;
     private Double maximaalTeLenenBedrag;
     private Double inkomen;
