@@ -3,6 +3,7 @@ package nl.bank.leningservice;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import nl.bank.leningservice.interfaces.levensverzekering.LevensVerzekeringRestClient;
+import nl.bank.leningservice.interfaces.levensverzekering.Levensverzekering;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,11 +34,11 @@ public class LeningService {
         return annuiteit;
     }
 
-    public Double getPremie(Double teVerzekerenRisico, Date geboortedatum, Integer looptijdInMaanden) {
+    public Levensverzekering getPremie(Double teVerzekerenRisico, Date geboortedatum, Integer looptijdInMaanden) {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String strGeboortedatum = dateFormat.format(geboortedatum);
 
-        Double premie = restClient.getPremie(teVerzekerenRisico.toString(), strGeboortedatum, looptijdInMaanden.toString());
-        return premie;
+        Levensverzekering levensverzekering = restClient.getPremie(teVerzekerenRisico.toString(), strGeboortedatum, looptijdInMaanden.toString());
+        return levensverzekering;
     }
 }

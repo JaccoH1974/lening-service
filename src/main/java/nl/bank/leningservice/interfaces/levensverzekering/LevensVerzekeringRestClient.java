@@ -15,7 +15,7 @@ public interface LevensVerzekeringRestClient {
         @RequestMapping(method = RequestMethod.GET,
                 value = "/bank/verzekering/leven",
                 consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-        Double getPremie(@RequestParam("verzekerdkapitaal") String verzekerdkapitaal,
+        Levensverzekering getPremie(@RequestParam("verzekerdkapitaal") String verzekerdkapitaal,
                          @RequestParam("geboortedatum")String geboortedatum,
                          @RequestParam("looptijd") String looptijd);
 
