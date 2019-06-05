@@ -74,11 +74,7 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!-- Producer dependency -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-contract-verifier</artifactId>
-            <scope>test</scope>
-        </dependency>
+
         <!-- Consumer dependency -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -113,17 +109,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-contract-maven-plugin</artifactId>
-                <version>${spring-cloud-contract.version}</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <baseClassForTests>
-                        nl.bank.leningservice.springcloudcontractproducer.BaseTestClass
-                    </baseClassForTests>
-                </configuration>
             </plugin>
         </plugins>
     </build>
