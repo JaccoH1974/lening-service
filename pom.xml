@@ -63,16 +63,7 @@
         </dependency>
 
         <!-- Contract Test Dependencies -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-contract-stub-runner</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>nl.bank.levensverzekering</groupId>
-            <artifactId>levensverzekering-service</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+
         <!-- Producer dependency -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -80,12 +71,7 @@
             <scope>test</scope>
         </dependency>
         <!-- Consumer dependency -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-contract-wiremock</artifactId>
-            <version>2.1.1.RELEASE</version>
-            <scope>test</scope>
-        </dependency>
+
 
     </dependencies>
 
