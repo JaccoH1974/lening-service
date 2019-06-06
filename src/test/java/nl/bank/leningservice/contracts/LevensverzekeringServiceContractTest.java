@@ -31,7 +31,7 @@ public class LevensverzekeringServiceContractTest {
     @Test
     public void goodRequest() throws Exception {
         Levensverzekering levensverzekering  = restClient.getPremie("25000", "1974-01-01", "360");
-        Assert.assertEquals(new Double(31.25d), levensverzekering.getPremie());
+        Assert.assertEquals(new Double(31.25d), levensverzekering.getPremie()); 
     }
     @Test
     public void badRequest() {

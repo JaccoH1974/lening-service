@@ -10,9 +10,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Levensverzekering {
-    private Double verzekerdkapitaal;
-    private LocalDate geboortedatum ;
-    private Integer looptijd;
+    private String risicoprofiel;
     private Double premie;
 
 }
