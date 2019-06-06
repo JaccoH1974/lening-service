@@ -52,7 +52,7 @@ public class LeningControllerTest {
                         .withBody("{\n" +
                                 "    \"premie\": 33.5,\n" +
                                 "    \"risicoprofiel\": \"risico matig\"\n" +
-                                "}")));
+                                "} ")));
     }
 
     @Test
