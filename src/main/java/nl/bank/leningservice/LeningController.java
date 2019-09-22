@@ -1,6 +1,7 @@
 package nl.bank.leningservice;
 
 import lombok.extern.slf4j.Slf4j;
+import nl.bank.leningservice.interfaces.levensverzekering.Levensverzekering;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
@@ -13,7 +14,7 @@ import java.util.Date;
 
 @Slf4j
 @RestController
-@RequestMapping(value = "/bank/lening", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/bank/lening", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class LeningController {
 
     @Autowired
@@ -32,10 +33,10 @@ public class LeningController {
             Double maxLening = service.calculateMaxLening(inkomen);
             Double teVerzekeringRisico = service.calculateTeVerzekerenRisico(maxLening);
 
-            Double premie = service.getPremie(teVerzekeringRisico, geboortedatum, looptijdInMaanden);
+            Levensverzekering levensverzekering  = service.getPremie(teVerzekeringRisico, geboortedatum, looptijdInMaanden);
             Double annuiteit = service.calculateAnnuiteit(maxLening, looptijdInMaanden, jaarrente);
 
-            Lening lening = new Lening(geboortedatum, maxLening, inkomen, annuiteit, teVerzekeringRisico, premie);
+            Lening lening = new Lening(geboortedatum, maxLening, inkomen, annuiteit, teVerzekeringRisico, levensverzekering.getPremie());
             return ResponseEntity.ok(lening);
         }
     }

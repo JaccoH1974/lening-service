@@ -3,6 +3,7 @@ package nl.bank.leningservice.contracts;
 import feign.FeignException;
 import lombok.extern.slf4j.Slf4j;
 import nl.bank.leningservice.interfaces.levensverzekering.LevensVerzekeringRestClient;
+import nl.bank.leningservice.interfaces.levensverzekering.Levensverzekering;
 import org.apache.http.HttpStatus;
 import org.junit.Assert;
 import org.junit.Test;
@@ -29,13 +30,13 @@ public class LevensverzekeringServiceContractTest {
 
     @Test
     public void goodRequest() throws Exception {
-        Double premie = restClient.getPremie("25000", "1974-01-01", "360");
-        Assert.assertEquals(new Double(31.25d), premie);
+        Levensverzekering levensverzekering  = restClient.getPremie("25000", "1974-01-01", "360");
+        Assert.assertEquals(new Double(31.25d), levensverzekering.getPremie()); 
     }
     @Test
     public void badRequest() {
         try {
-            Double premie = restClient.getPremie("25000", null, "360");
+            Levensverzekering levensverzekering = restClient.getPremie("25000", null, "360");
             Assert.fail();
         } catch (FeignException e){
           log.info("Status {}", e.status());
