@@ -14,7 +14,7 @@ import java.util.Date;
 
 @Slf4j
 @RestController
-@RequestMapping(value = "/bank/lening", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/bank/lening", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class LeningController {
 
     @Autowired
